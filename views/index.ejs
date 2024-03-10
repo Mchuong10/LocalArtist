@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Local PNW Artists Page!</title>
+   <link rel="stylesheet" href="stylesheets/themes/my-custom-theme.css">
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+
+
+  <div id="container">
+
+    <!--HOME PAGE-->
+    <!--NAV-->
+    <div data-role="page" id="home" data-theme="a">
+      <div data-role="header" data-theme="a">
+        <h2>PNW Artists - Home</h2>
+        <div data-role="navbar">
+          <ul>
+            <li>
+              <a href="#add" data-transition="flip">Add Profile</a>
+            </li>
+            <li>
+              <a href="#list" data-transition="flip">Artist Directory</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!--CONTENT-->
+      <div data-role="content" data-theme="a">
+        <h2>Artist Spotlight</h2>
+
+    <!--SLIDESHOW-->
+<div id="slides">
+  
+  <img id="slideshow" src="images/art1.jpeg" alt="art1" />
+  <p id="caption">"WaterColor by Pepper Allphin"</p>
+</div>
+
+<br>
+</div>
+
+      <!--FOOTER-->
+      <div data-role="footer" data-theme="a">
+        <h3>Created by Marie & Shay 2024</h3>
+      </div>
+    </div>
+    <!--END-->
+
+    <!--ADD PAGE-->
+    <!--NAV-->
+    <div data-role="page" id="add"data-theme="a">
+      <div data-role="header" data-theme="a">
+        <h2>PNW Artists - Add Profile </h2>
+        <div data-role="navbar" data-theme="a">
+          <ul>
+            <li><a href="#home" data-transition="pop">Home Page</a></li>
+            <li>
+              <a href="#list" data-transition="flip">Artist Directory</a>
+            </li>
+          </ul>
+        </div>
+
+        <!--CONTENT-->
+        <div>
+          <div data-role="content" data-theme="a">
+            <h2>Enter Your Information </h2>
+
+          
+
+          <form action="/addOne" method="POST" data-theme="a">
+            <label for="fName">First Name:</label>
+            <input type="text" id="fName" name="fName" value="" />
+          
+            <label for="lName">Last Name:</label>
+            <input type="text" id="lName" name="lName" value="" />
+          
+            <label for="website">Website/Social Media:</label>
+            <input type="text" id="website" name="website" value="" />
+          
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" value="" />
+          
+            <label for="artType">Select art type:</label><br>
+            <select id="artType" name="artType" required>
+              <option disabled selected value> -- select an option -- </option>
+              <option value="Painting">Painting</option>
+              <option value="Drawing">Drawing</option>
+              <option value="Sculpting">Sculpting</option>
+              <option value="Photography">Photography</option>
+              <option value="Film">Film</option>
+              <option value="Music">Music</option>
+              <option value="Literature">Literature</option>
+              <option value="Performing Arts">Performing Arts</option>
+              <option value="Other">Other</option>
+            </select><br>
+          
+            <input type="submit" id="subButton" value="Submit">
+          </form>
+        </div>
+        </div>
+      <!--FOOTER-->
+        <div data-role="footer" data-theme="a">
+          <h3>Created by Marie & Shay 2024</h3>
+      </div>
+    </div>
+    </div>
+    <!--END-->
+
+    <!--LIST/SEARCH-->
+    <div data-role="page" id="list"data-theme="a">
+      <div data-role="header" data-theme="a">
+        <h2>PNW Artists - Add Profile </h2>
+        <div data-role="navbar" data-theme="a">
+          <ul>
+            <li><a href="#home" data-transition="pop">Home Page</a></li>
+            <li>
+              <a href="#add" data-transition="flip">Artist Directory</a>
+            </li>
+          </ul>
+        </div>
+ 
+
+      <!-- Content for the List Page -->
+    <div data-role="content" data-theme='a'>
+      <h2>Local Artist Listings</h2>
+
+
+      <select name="filterType" id="filterType">
+        <option value="All">All</option>
+        <option value="Painting">Painting</option>
+        <option value="Drawing">Drawing</option>
+        <option value="Sculpting">Sculpting</option>
+        <option value="Photography">Photography</option>
+        <option value="Film">Film</option>
+        <option value="Music">Music</option>
+        <option value="Literature">Literature</option>
+        <option value="Performing Arts">Performing Arts</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <ul id="artist-list" data-role="listview" data-inset="true">
+        <% serverArray.forEach((artist) => { %>
+          <li>
+            <a href="<%= artist.website %>">
+              <h2><%= artist.name %></h2>
+              <p><strong>ID</strong> <%= artist.ID %></p>
+              <p><strong>City:</strong> <%= artist.city %></p>
+              <p><strong>Art Type:</strong> <%= artist.art %></p>
+            </a>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+      </div>
+        <!--FOOTER-->
+        <div data-role="footer"data-theme='a'>
+          <h4>Created by Marie & Shay 2024</h4>
+        </div>
+      </div>
+    <!--END-->
+  </div>
+
+  <script src="javascripts/artistindex.js"></script>
+
+</body>
+</html>
