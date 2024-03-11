@@ -146,13 +146,13 @@
       </select>
 
       <ul id="artist-list" data-role="listview" data-inset="true">
-        <% serverArray.forEach((artist) => { %>
+        <% serverArray.forEach((pArtist) => { %>
           <li>
-            <a href="<%= artist.website %>">
-              <h2><%= artist.name %></h2>
-              <p><strong>ID</strong> <%= artist.ID %></p>
-              <p><strong>City:</strong> <%= artist.city %></p>
-              <p><strong>Art Type:</strong> <%= artist.art %></p>
+            <a href="<%= pArtist.website %>">
+              <h2><%= pArtist.name %></h2>
+              <p><strong>ID</strong> <%= pArtist.ID %></p>
+              <p><strong>City:</strong> <%= pArtist.city %></p>
+              <p><strong>Art Type:</strong> <%= pArtist.art %></p>
             </a>
           </li>
         <% }); %>

@@ -1,4 +1,4 @@
-var serverArray;
+const serverArray = [];
 artistIndex = [];
 var currentIndex = 0;
 var slides = document.getElementById("slides");
@@ -39,19 +39,15 @@ function pArtist (pID, pName, pWebsite, pCity, pArt) {
 //dom loaded
 
 document.addEventListener("DOMContentLoaded", function (event) {
+
   document.getElementById("subButton").addEventListener("click", function () {
-    addArtist();
+
   });
 
-
-
-  createTable();
+/*   createTable(); */
   // Trigger the automatic slideshow initially
   autoSlide();
-});
 
-
-document.addEventListener('DOMContentLoaded', function() {
   // Select the filter element
   var filterSelect = document.getElementById('filterType');
 
@@ -66,17 +62,17 @@ document.addEventListener('DOMContentLoaded', function() {
     var filterType = filterSelect.value;
 
     // Loop through each artist in the serverArray
-    serverArray.forEach(function(artist) {
+    serverArray.forEach(function(pArtist) {
       // Check if the artist's art type matches the selected filter
-      if (filterType === "All" || artist.art === filterType) {
+      if (filterType === "All" || pArtist.art === filterType) {
         // Create a list item for the artist
         var listItem = document.createElement("li");
         listItem.innerHTML = `
-          <a href="${artist.website}">
-            <h2>${artist.name}</h2>
-            <p><strong>ID:</strong> ${artist.ID}</p>
-            <p><strong>City:</strong> ${artist.city}</p>
-            <p><strong>Art Type:</strong> ${artist.art}</p>
+          <a href="${pArtist.website}">
+            <h2>${pArtist.name}</h2>
+            <p><strong>ID:</strong> ${pArtist.ID}</p>
+            <p><strong>City:</strong> ${pArtist.city}</p>
+            <p><strong>Art Type:</strong> ${pArtist.art}</p>
           </a>
         `;
 
@@ -119,20 +115,20 @@ function next() {
       }
 
 // create table
-function createTable() {
+/* function createTable() {
   var theTable = document.getElementById("tableID");
   theTable.innerHTML = "";
   //column headings
-  theTable.innerHTML = "<thead><th>ID</th><th>Name</th><th>Website</th><th>City</th><th>Art Type</th></thead>";
+  theTable.innerHTML = "<thead><th>ID</th><th>Name</th><th>Website</th><th>City</th><th>Art Type</th></thead>"; */
   
-    artistIndex.forEach(function(artist){
+    /* artistIndex.forEach(function(Artist){
       var myLi = document.createElement('li');
       myLi.classList.add('artistIndex');
-      myLi.setAttribute("data-parm", artist.ID);
-      myLi.innerHTML = artist.ID + ": " + artist.name + "  " + artist.art;
+      myLi.setAttribute("data-parm", Artist.ID);
+      myLi.innerHTML = Artist.ID + ": " + Artist.name + "  " + Artist.art;
       myUL.appendChild(myLi);
       myLi.addEventListener('click', function () {
-        openWebsite(artist.ID);
+        openWebsite(Artist.ID);
       })
 
     })
@@ -144,9 +140,9 @@ function createTable() {
         element.addEventListener('click', function () {
         })   
      }
-    )
-    //rows
- artistIndex.forEach((Artist) => {
+    ) */
+/*     //rows
+    artistIndex.forEach((Artist) => {
     const newRow = document.createElement("tr");
     const tdID = document.createElement("td");
     const tdName = document.createElement("td");
@@ -166,13 +162,17 @@ function createTable() {
     theTable.appendChild(newRow);
 
     newRow.addEventListener("click", function () {
-      openWebsite(artist.ID);
+      openWebsite(Artist.ID);
+      
     });
   });
-}
+  
+  */ 
+
+/* } */
  
-var table = document.getElementById("tableID");
-var rows = table.getElementsByTagName("tr");
+/* var table = document.getElementById("tableID");
+//var rows = table.getElementsByTagName("tr");
 for (var i = 0; i < rows.length; i++) {
   var currentRow = table.rows[i];
   var createClickHandler = function (row) {
@@ -183,7 +183,7 @@ for (var i = 0; i < rows.length; i++) {
     };
   };
   currentRow.onclick = createClickHandler(currentRow);
-}
+} */
 
 function openWebsite(which) {
     for (let i = 0; i < artistIndex.length; i++) {

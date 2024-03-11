@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var serverArray = [];
 // Define the pArtist constructor function
 function pArtist(pID, pName, pWebsite, pCity, pArt) {
     this.ID = pID;
@@ -11,7 +11,7 @@ function pArtist(pID, pName, pWebsite, pCity, pArt) {
 }
 
 // Create an array to store artists
-var serverArray = [
+serverArray = [
   new pArtist(
     Math.random().toString(16).slice(5),
     "Sarah Hughes",
@@ -60,9 +60,10 @@ var serverArray = [
     "https://www.patreon.com/willbrownart",
     "Seattle",
     "Painting"
-  )
+  ),
+  
 ];
-
+console.log(serverArray)
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Welcome to Local PNW Artists Page!', serverArray: serverArray });
