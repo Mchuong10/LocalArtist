@@ -5,13 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Local PNW Artists Page!</title>
    <link rel="stylesheet" href="stylesheets/themes/my-custom-theme.css">
-  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-</head>
+   <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+   <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+   <script defer src="javascripts/index.js"></script>
 <body>
-
-
 
   <div id="container">
 
@@ -121,7 +119,7 @@
           <ul>
             <li><a href="#home" data-transition="pop">Home Page</a></li>
             <li>
-              <a href="#add" data-transition="flip">Artist Directory</a>
+              <a href="#add" data-transition="flip">Add Profile</a>
             </li>
           </ul>
         </div>
@@ -145,19 +143,14 @@
         <option value="Other">Other</option>
       </select>
 
-      <ul id="artist-list" data-role="listview" data-inset="true">
-        <% serverArray.forEach((pArtist) => { %>
-          <li>
-            <a href="<%= pArtist.website %>">
-              <h2><%= pArtist.name %></h2>
-              <p><strong>ID</strong> <%= pArtist.ID %></p>
-              <p><strong>City:</strong> <%= pArtist.city %></p>
-              <p><strong>Art Type:</strong> <%= pArtist.art %></p>
-            </a>
-          </li>
-        <% }); %>
-      </ul>
-    </div>
+        <div id="ArtistList">
+          
+          <table id="tableID">
+
+          </table>
+        </div>
+        <!--<input type="button" value="Sort By City" id="buttonSortCity" data-inline="true" />
+       <input type="button" value="Sort By Art" id="buttonSortArt" data-inline="true" />-->
       </div>
         <!--FOOTER-->
         <div data-role="footer"data-theme='a'>
@@ -166,8 +159,6 @@
       </div>
     <!--END-->
   </div>
-
-  <script src="javascripts/artistindex.js"></script>
 
 </body>
 </html>
