@@ -75,19 +75,6 @@ $(document).on("pagebeforeshow", "#list", function (event) {   // have to use jQ
 
 });
 
-
-
-
-/* artistIndex.forEach((Artist) => {
-  $.get("/getAllArtist", function(data, status){  // AJAX get​
-    artistIndex = data;});
-  // Check if the artist matches the selected type or if "All" is selected
-  if (filterType === "All" || Artist.art === filterType) {
-    let listItem = document.createElement("li");
-    listItem.textContent = `${Artist.name} - ${Artist.city} - ${Artist.website} - ${Artist.art}`;
-    artistsList.appendChild(listItem); */
- /*  }
-}); */
 //create list
 function createList() {
   $.get("/getAllArtist", function(data, status){  // AJAX get​
@@ -103,21 +90,6 @@ function createList() {
   artistIndex.forEach((Artist)=> {
     if (filterType === "All" || Artist.art === filterType) {
     
-  /*   function displayArtists() {
-      let artistsList = document.getElementById("artistsList");
-      let filterType = document.getElementById("filterType").value;
-      artistsList.innerHTML = "";
-    
-      artistIndex.forEach((Artist) => {
-        // Check if the artist matches the selected type or if "All" is selected
-        if (filterType === "All" || Artist.art === filterType) {
-          let listItem = document.createElement("li");
-          listItem.textContent = `${Artist.name} - ${Artist.city} - ${Artist.website} - ${Artist.art}`;
-          artistsList.appendChild(listItem);
-        }
-      });
-    }
- */
     const newRow = document.createElement("tr");
     const tdID = document.createElement("td");
     const tdName = document.createElement("td");
@@ -169,26 +141,6 @@ function openWebsite(which) {
   }
 }
 
-  
-/* filteredArtists.forEach(function (element, i) {   
-      var myLi = document.createElement('li');
-      myLi.classList.add('oneArtist');    
-      myLi.innerHTML =  + i +1  + ":  " + element.name + " "+ element.city + "  " + element.art;
-      myLi.setAttribute("data-parm", element.ID);
-      myUL.appendChild(myLi);  
-  });
-  var liList = document.getElementsByClassName("oneArtist");  
-  let newArtistArray = Array.from(liList);  
-  newArtistArray.forEach(function (element,i) {     
-      element.addEventListener('click', function () {     
-      
-          var parm = this.getAttribute("data-parm");  
-          localStorage.setItem('parm', parm);
-          document.location.href = "index.html#list";  
-      });
-  }); */
-
-
 //Auto Slideshow function
   function autoSlide() {
     setInterval(function () {
@@ -207,21 +159,5 @@ function next() {
   currentIndex = (currentIndex + 1) % myImages.length;
   updateImage();
 }
-//Function to dynamically sort array of objects by property
-// function dynamicSort(property) {     // we will pass in the propery name we want to sort by
-//   var sortOrder = 1;
 
-//  if (property[0] === "-") {
-//     sortOrder = -1;
-//      property = property.substr(1);
-//   }
-
-//  return function (a, b) {
-//      if (sortOrder == -1) {
-//          return b[property].localeCompare(a[property]);
-//      } else {
-//          return a[property].localeCompare(b[property]);
-//  }
-//  }
-// }
 
