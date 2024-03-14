@@ -17,7 +17,6 @@ var captionImages = [
   "Solo tree landscape by Will Brown",
 ];
 
-
 // Artist objects array
 var artistIndex = [];
 
@@ -31,25 +30,11 @@ function pArtist (pID, pName, pWebsite, pCity, pArt) {
   this.website = pWebsite;
   this.city = pCity;
   this.art = pArt;
-  this.ID = Math.random().toString(16).slice(5)
 }; 
 
 let selectedArt = "not selected";
 
 document.addEventListener("DOMContentLoaded", function () {
-
-//Add event listener for filter change
-// document.getElementById("filterType").addEventListener("click", function () {
-//   document.getElementById("Drawing").value = "";
-//   document.getElementById("Sculpting").value = "";
-//    document.getElementById("Photography").value = "";
-//   document.getElementById("Film").value = "";
-//   document.getElementById("Music").value = ""; 
-//   document.getElementById("Literature").value = "";
-//   document.getElementById("Performing Arts").value = "";
-//   document.getElementById("Other").value = "";
-//   document.location.href = "index.html#List";
-// });
 
   // create table 
   createList();
@@ -57,11 +42,40 @@ document.addEventListener("DOMContentLoaded", function () {
   // Trigger the automatic slideshow initially
   autoSlide();
 
+  // Add New Artist subButton
   document.getElementById("subButton").addEventListener("click", function () {
-  artistIndex.push(new ArtistObject(document.getElementById("Name").value, document.getElementById("City").value,
-  selectedArt, document.getElementById("Art").value));
-    document.location.href = "index.html#list";
-});
+     let id = Math.random().toString(16).slice(5);
+     let newArtist = new pArtist
+     (id,
+    document.getElementById("fName").value + " " + document.getElementById("lName").value,
+    document.getElementById("website").value,
+    // selectedArt,
+    document.getElementById("city").value,
+    document.getElementById("artType").value);
+    // // console.log(newArtist)
+
+    // let newArtist = new pArtist("ID_new", "L D", "google.com", "Tacoma", "Art Type");
+    // push new movie to server
+    $.ajax({
+      url : "/addOne",
+      type: "POST",
+      data: JSON.stringify(newArtist),
+      contentType: "application/json; charset=utf-8",
+      success: function (result) {
+      console.log(result);
+      document.location.href = "index.html#list";
+        
+      },
+
+      error: function(xhr, testStatus, errorThrown){
+        alert("server could not add movie:" + newArtist.Name);
+        alert(testStatus +" " + errorThrown);
+      }
+      });
+      
+    });
+
+    //filter listener
 document.addEventListener("change", function(event) {
   if (event.target.id === "filterType") {
       createList();
@@ -136,7 +150,12 @@ function createList() {
 function openWebsite(which) {
   for (let i = 0; i < artistIndex.length; i++) {
     if (which == artistIndex[i].ID) {
-      window.open(artistIndex[i].website);
+      let artist = artistIndex[i];
+      if (artist.website.startsWith("http") || artist.website.startsWith("https")) {
+        window.open(artistIndex[i].website);
+      } else {
+        window.open("https://"+artistIndex[i].website);
+      }
     }
   }
 }

@@ -10,6 +10,8 @@
    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
    <script defer src="javascripts/index.js"></script>
+   <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="16x16" />
+
 <body>
 
   <div id="container">
@@ -51,7 +53,7 @@
       </div>
     </div>
     <!--END-->
-
+    <button type="delete" id="deleteButton" value="delete">DELETE ENTRY</button>
     <!--ADD PAGE-->
     <!--NAV-->
     <div data-role="page" id="add"data-theme="a">
@@ -73,7 +75,7 @@
 
           
 
-          <form action="/addOne" method="POST" data-theme="a">
+          <div data-theme="a">
             <label for="fName">First Name:</label>
             <input type="text" id="fName" name="fName" value="" />
           
@@ -100,8 +102,9 @@
               <option value="Other">Other</option>
             </select><br>
           
-            <input type="submit" id="subButton" value="Submit">
-          </form>
+            <button type="submit" id="subButton" value="Submit">SUBMIT</button>
+            
+          </div>
         </div>
         </div>
       <!--FOOTER-->
@@ -146,9 +149,8 @@
 
         <div id="ArtistList">
           
-          <table id="tableID">
-
-          </table>
+          <table id="tableID"></table>
+          <button type="delete" id="deleteButton" value="delete">DELETE ENTRY</button>
         </div>
         <!--<input type="button" value="Sort By City" id="buttonSortCity" data-inline="true" />
        <input type="button" value="Sort By Art" id="buttonSortArt" data-inline="true" />-->
