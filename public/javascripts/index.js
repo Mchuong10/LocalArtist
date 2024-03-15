@@ -6,6 +6,8 @@ var myImages = [
   "images/WillBrown1.jpg",
   "images/WillBrown2.jpg",
   "images/WillBrown3.jpg",
+  "images/adelandersonchickens.jpg",
+  "images/Murals.jpeg"
 ];
 //slideshow captions
 var captionImages = [
@@ -15,6 +17,8 @@ var captionImages = [
   "Original Abstract by Will Brown",
   "Original Abstract by Will Brown",
   "Solo tree landscape by Will Brown",
+  "Chickens by Adel Anderson",
+  "Murals by Sara Hughes"
 ];
 
 // Artist objects array
